@@ -1,4 +1,4 @@
-\documentclass{article}
+$$\documentclass{article}
 \usepackage{graphicx} % Required for inserting images
 \usepackage{listings}
 \usepackage{color}
@@ -729,4 +729,4 @@ for well in os.listdir(r'G:\Shared drives\Lybrand MEA Drive\NEW Blast Analysis')
         plt.close()
 \end{lstlisting}
 Based on the data extracted from the previous analysis, this code generates scatterplots of each perfect node's size.
-\end{document}
+\end{document}$$
