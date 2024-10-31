@@ -169,11 +169,11 @@ This code initiates a series of lists that will be used to hold the data until t
             data = data.rename(r_dict, axis='columns')
 ```
 This block of code reads each of the (now split up) files and renames the indices to channel names.
-\begin{lstlisting}
+```
             synchron_data = synch_data(data, channels, t)  # extracts synchrony index data
             print(synchron_data)
 ```
-Here we call the synch\_data function that calculates the synchronization index for every pair of channels. The function is shown below:
+Here we call the synch_data function that calculates the synchronization index for every pair of channels. The function is shown below:
 ```
 def synch(ch1, ch2,t):
 \# Select Channels to compare
