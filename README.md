@@ -176,25 +176,25 @@ This block of code reads each of the (now split up) files and renames the indice
 Here we call the synch_data function that calculates the synchronization index for every pair of channels. The function is shown below:
 ```
 def synch(ch1, ch2,t):
-\# Select Channels to compare
-\# Change to channels of interest (e.g. ch12, ch21, etc.)
+# Select Channels to compare
+# Change to channels of interest (e.g. ch12, ch21, etc.)
     s1 = ch1
     s2 = ch2
 
-\# Set up FFT and convolution
-\# Create complex Morlet Wavelet
+# Set up FFT and convolution
+# Create complex Morlet Wavelet
     srate = len(ch1)
     center_freq = 5                                         # filter frequency
     time = np.linspace(-1, 1, srate)
 
-  \# Create complex sine wave
+  # Create complex sine wave
     sine_wave = np.exp((1j*2) * np.pi * center_freq * time)
 
-  \# Create Gaussian window
+  # Create Gaussian window
     s = 7 / (2 * np.pi * center_freq)
     gaus_win = np.exp((-np.power(time,2) / (2 * np.power(s,2))))
 
-  \# Create Morlet Wavelet
+  # Create Morlet Wavelet
     cmw = np.multiply(sine_wave, gaus_win)
     half_wavN = (len(time)-1)/2
 
@@ -208,20 +208,20 @@ def synch(ch1, ch2,t):
     max_waveletX = np.amax(waveletX)
     waveletXf = np.divide(waveletX, max_waveletX)
 
-  \# compute Hz for plotting
+  # compute Hz for plotting
     hz_min = 0.0
     hz_max = np.floor((n_conv/2)+1)
     hz_half = np.multiply(srate, 0.5)
     hz = np.linspace(hz_min, hz_max, len(t))
 
 
-  \# Calculate phase angle for each channel
-  \# analytic signal of channel 1
+  # Calculate phase angle for each channel
+  # analytic signal of channel 1
     fft_data = np.fft.fft(s1)                                   #fft of channel 1
     ch1_conv = np.multiply(waveletX, fft_data)                  #convolution of channel 1
     an_s1 = np.fft.ifft(ch1_conv)                               #inverse fft to return analog signal
 
-  \# collect real and phase data
+  # collect real and phase data
     phase_data1 = np.angle(an_s1)
     real_data1 = np.real(an_s1)
 
